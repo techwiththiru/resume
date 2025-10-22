@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
+gem "jekyll", "~> 4.3.2"
+gem "minima", "~> 2.5"
+gem "jekyll-feed"
 gem "jekyll-seo-tag"
-# only add more gems here if you need them -- keep it minimal to start

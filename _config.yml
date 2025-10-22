@@ -1,0 +1,15 @@
+title: "My Resume Site"
+description: "Personal resume and portfolio built with Jekyll"
+baseurl: "" 
+url: "https://techwiththiru.github.io"
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
