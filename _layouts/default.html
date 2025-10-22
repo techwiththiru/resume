@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="{{ site.theme | default: 'dark' }}">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-<header>
-  <div class="site-title">
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    {% if site.subtitle %}
-      <p>{{ site.subtitle }}</p>
-    {% endif %}
-  </div>
 
-  <div class="header-actions">
-    <div class="theme-switch-wrapper">
-      <label class="theme-switch">
-        <input type="checkbox" id="theme-toggle">
-        <span class="slider round"></span>
-      </label>
+  <!-- Header -->
+  <header>
+    <div class="site-title">
+      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      {% if site.subtitle %}
+        <p>{{ site.subtitle }}</p>
+      {% endif %}
     </div>
 
-    {% if site.pdf_download %}
-      <a href="{{ site.pdf_download }}" class="pdf-button" target="_blank">Download PDF</a>
-    {% endif %}
-  </div>
-</header>
+    <div class="header-actions">
+      <!-- Theme toggle -->
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
 
+      <!-- PDF download button -->
+      {% if page.pdf_download %}
+        <a href="{{ page.pdf_download | relative_url }}" class="pdf-button" target="_blank">Download PDF</a>
+      {% endif %}
+    </div>
+  </header>
 
-  <main class="content">
+  <!-- Main content -->
+  <main>
     {{ content }}
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
   </footer>
 
-  <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
+  <!-- JS -->
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+
 </body>
 </html>

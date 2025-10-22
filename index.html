@@ -1,0 +1,26 @@
+---
+layout: default
+title: "My Resume"
+pdf_download: "/assets/pdf/thiru-resume.pdf"
+---
+
+<main>
+  <section id="experience">
+    <h2>Experience</h2>
+
+    {% for exp in site.data.experience %}
+      <div class="experience-block">
+        <h3>{{ exp.title }}</h3>
+        <h4>{{ exp.company }} - {{ exp.period }}</h4>
+
+        {% for proj in exp.projects %}
+          <h5>{{ proj.name }}</h5>
+          <p>{{ proj.description }}</p>
+          {% if proj.tech_stack %}
+            <p><strong>Tech Stack:</strong> {{ proj.tech_stack | join: ", " }}</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </section>
+</main>
