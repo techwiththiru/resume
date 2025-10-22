@@ -63,8 +63,9 @@ jobs:
       # 🧩 Step 7: Generate PDF (via Dockerized wkhtmltopdf)
       - name: Generate PDF
         run: |
-          docker run --rm -v $PWD:/data openlabs/docker-wkhtmltopdf \
-          wkhtmltopdf --enable-local-file-access /data/_site/index.html /data/${{ env.PDF_NAME }}
+          docker run --rm -v $PWD:/data madnight/docker-alpine-wkhtmltopdf \
+            wkhtmltopdf --encoding utf-8 --enable-local-file-access \
+            _site/index.html "${{ env.PDF_NAME }}"
 
       # 🧩 Step 8: Move PDF to docs/ (ensures it's deployed to GitHub Pages)
       - name: Move PDF to docs/
