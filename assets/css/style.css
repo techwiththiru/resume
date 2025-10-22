@@ -1,68 +1,107 @@
+/* === Base Styles === */
 :root {
-  --bg-dark: #0d1117;
-  --bg-light: #ffffff;
-  --text-dark: #c9d1d9;
-  --text-light: #0d1117;
-  --accent: #2f81f7;
-
-  --max-width: 850px;
-  --padding: 1.5rem;
+  --bg-light: #fdfdfd;
+  --text-light: #222;
+  --bg-dark: #1c1c1c;
+  --text-dark: #eaeaea;
+  --accent: #0078d4;
+  --max-width: 900px;
+  --content-padding: 1.2rem;
+  --border-color-light: #ddd;
+  --border-color-dark: #333;
+  --font-body: 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 
-[data-theme='dark'] {
-  background-color: var(--bg-dark);
-  color: var(--text-dark);
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
-[data-theme='light'] {
-  background-color: var(--bg-light);
-  color: var(--text-light);
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 0;
+  font-family: var(--font-body);
   line-height: 1.6;
-  padding: var(--padding);
-  display: flex;
-  justify-content: center;
+  background-color: var(--bg-light);
+  color: var(--text-light);
   transition: background-color 0.3s, color 0.3s;
 }
 
-main {
-  width: 100%;
-  max-width: var(--max-width);
+/* === Dark Theme === */
+[data-theme="dark"] body {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
 }
 
+/* === Header === */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: var(--content-padding);
+  border-bottom: 1px solid var(--border-color-light);
   flex-wrap: wrap;
 }
 
-.theme-toggle {
-  cursor: pointer;
-  border: none;
-  background: var(--accent);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 1.2rem;
+[data-theme="dark"] header {
+  border-color: var(--border-color-dark);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+header p {
+  margin: 0.3rem 0 0;
   font-size: 0.9rem;
-  margin-top: 0.5rem;
-}
-
-h1, h2, h3 {
   color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #005ea6;
+}
+
+/* === Main Content === */
+main {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  padding: 0 var(--content-padding);
+}
+
+h2, h3, h4, h5, h6 {
   margin-top: 1.5rem;
-  line-height: 1.3;
+  color: var(--accent);
 }
 
-section {
-  margin-bottom: 1.5rem;
+p, ul, li {
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
+/* === Links === */
 a {
   color: var(--accent);
   text-decoration: none;
@@ -72,49 +111,60 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 📱 Responsive Typography and Padding */
+/* === Lists === */
+ul {
+  padding-left: 1.5rem;
+}
+
+/* === Responsive Layout === */
 @media (max-width: 768px) {
-  body {
-    padding: 1rem;
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  main {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
   }
 
   h1 {
-    font-size: 1.6rem;
-  }
-
-  h2 {
     font-size: 1.3rem;
   }
 
-  h3 {
+  h2 {
     font-size: 1.1rem;
   }
 
-  .theme-toggle {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+  p, li {
+    font-size: 0.95rem;
   }
 }
 
-/* 🖨️ Print-friendly */
+/* === Print-Friendly (PDF Download) === */
 @media print {
-  .theme-toggle {
-    display: none;
+  button, .header-actions {
+    display: none !important;
   }
 
   body {
-    color: black;
-    background: white;
-    padding: 0;
+    background: white !important;
+    color: black !important;
   }
 
   a {
-    color: black;
+    color: black !important;
     text-decoration: none;
   }
 
   main {
-    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 }
 
