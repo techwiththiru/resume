@@ -1,0 +1,119 @@
+:root {
+  --bg-dark: #0d1117;
+  --bg-light: #ffffff;
+  --text-dark: #c9d1d9;
+  --text-light: #0d1117;
+  --accent: #2f81f7;
+
+  --max-width: 850px;
+  --padding: 1.5rem;
+}
+
+[data-theme='dark'] {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+[data-theme='light'] {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  padding: var(--padding);
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+main {
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  border: none;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1.2rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+h1, h2, h3 {
+  color: var(--accent);
+  margin-top: 1.5rem;
+  line-height: 1.3;
+}
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Responsive Typography and Padding */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .theme-toggle {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* 🖨️ Print-friendly */
+@media print {
+  .theme-toggle {
+    display: none;
+  }
+
+  body {
+    color: black;
+    background: white;
+    padding: 0;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  main {
+    width: 100%;
+  }
+}
