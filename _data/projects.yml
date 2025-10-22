@@ -1,8 +1,0 @@
-
-- name: "Cloud Migration Accelerator"
-  description: "Automated framework to migrate legacy workloads to Azure."
-  link: "https://github.com/yourusername/cloud-migration"
-
-- name: "API Governance Toolkit"
-  description: "Open-source API management policy and linting rules."
-  link: "https://github.com/yourusername/api-governance"
