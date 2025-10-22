@@ -3,13 +3,13 @@ layout: default
 title: My Resume
 ---
 
-<h2>Experience</h2>
+<h2>Career Summary</h2>
 
 {% for exp in site.data.experience %}
 <section class="experience">
   <h3>{{ exp.title }}</h3>
   <h4>{{ exp.company }} — {{ exp.location }} | {{ exp.period }}</h4>
-  <p>{{ exp.description }}</p>
+  <h5>{{ exp.description }}</h5>
 
   {% if exp.achievements %}
     <h5>Key Achievements:</h5>

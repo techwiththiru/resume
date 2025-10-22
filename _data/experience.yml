@@ -5,12 +5,174 @@
   description: >
     Led modernization of legacy monolithic systems into microservices & cloud-native architecture.
   achievements:
-    - "Implemented Azure-based microservices platform with auto-scaling."
-    - "Reduced operational costs by ~30%."
+    - category: Cloud Platforms & Infrastructure
+      items:
+        - |
+          Architect and deploy Microsoft Azure services (App Services, Azure Functions, AKS, Container Apps, Logic Apps, Application Gateway, Front Door, Traffic Manager, Key Vault, etc.) and cloud-native patterns (IaaS/PaaS, multi-region deployments, auto-scaling). Utilize infrastructure-as-code using Terraform, Bicep, and ARM Templates.
+    - category: Programming & Frameworks
+      items:
+        - |
+          Expert in C# and .NET (.NET 8, .NET 6, .NET Core, .NET Framework 4.8) for building web applications, APIs, and microservices (ASP.NET MVC/Web API).
+    - category: Systems & Integration
+      items:
+        - |
+          Design and implement event-driven microservices with asynchronous messaging (Kafka, RabbitMQ, Azure Service Bus, MassTransit, Eventuate) and hybrid API strategies (REST, SOAP, GraphQL). Employ patterns like Domain Events, CQRS, and Transactional Outbox for data consistency. Leverage API Management (Azure APIM, Apigee), Swagger/OpenAPI, and tools (Postman, Newman, Spectral, MockServer) for API governance and testing.
+    - category: DevOps & CI/CD
+      items:
+        - |
+          Build automated pipelines with Azure DevOps, GitHub Actions, Jenkins, and GitOps workflows. Integrate SonarQube SAST and quality gates to enforce coding standards and security checks. Manage source control with Git/GitHub/TFS and use YAML for pipeline definitions.
+    - category: Data & Storage
+      items:
+        - |
+          Expert in relational databases (SQL Server, Azure SQL, PostgreSQL) and NoSQL (Cosmos DB, Redis). Skilled in Entity Framework (code-first and database-first), Dapper, and writing optimized SQL (complex joins, CTEs, window functions). Implement stored procedures, triggers, and query tuning for performance.
+    - category: Security & Identity
+      items:
+        - |
+          Implement authentication and authorization using OAuth2, OpenID Connect (OIDC), and JWTs, enforcing Role-Based Access Control (RBAC) with Azure AD/Entra ID and Azure AD B2C. Secure services with mTLS and client certificates, and manage secrets/configuration via Azure Key Vault.
+    - category: Monitoring & Observability
+      items:
+        - |
+          Set up logging and metrics collection with Application Insights, Azure Monitor, Log Analytics, Grafana, and Loki. Create dashboards and alerts for proactive health checks and fast issue resolution.
+    - category: Software Practices & Methodologies
+      items:
+        - |
+          Advocate Agile and SAFe processes, Test-Driven Development (TDD) with xUnit, and strong design principles (DRY, SOLID). Utilize design patterns (Repository, Unit of Work, Decorator, Caching, Dependency Injection) to create maintainable code. Emphasize 12-factor application development and domain-driven design for clean, testable architectures.
   tech_stack:
     - category: Languages & Frameworks
-      items: ["C#", ".NET 8", ".NET 6", ".NET Core", "Web API", "TypeScript", "JavaScript"]
+      items:
+        - 'C#'
+        - '.NET 8'
+        - '.NET 6'
+        - '.NET Core'
+        - '.NET Framework (4.8, 4.6)'
+        - 'Web API'
     - category: Frontend Development
-      items: ["Angular (v18)", "Micro Frontends", "Nx", "SPA Development", "Responsive UI"]
+      items: 
+        - 'Angular (v18)'
+        - 'Micro Frontends'
+        - 'Nx'
+        - 'NgRx'
+        - 'RxJs'
+        - 'TypeScript'
+        - 'JavaScript'
+        - 'HTML5'
+        - 'CSS3'
     - category: Cloud & Platform Services
-      items: ["Azure App Services", "Functions", "Logic Apps", "Application Gateway", "Key Vault", "Blob Storage"]
+      items: 
+        - Azure
+        - 'App Services'
+        - 'Functions'
+        - 'Logic Apps'
+        - 'Application Gateway'
+        - 'Front Door'
+        - 'Key Vault'
+        - 'Blob Storage'
+        - 'Azure AD'
+        - 'Azure AD B2C'
+        - 'Entra ID'
+        - 'PaaS'
+        - IaaS
+        - Serverless
+    - category: Architecture & Design
+      items:
+        - 'Microservices'
+        - 'Event-Driven Architecture'
+        - 'CQRS'
+        - 'Sagas'
+        - 'Aggregates'
+        - 'Bounded Contexts'
+        - 'Domain-Driven Design (DDD)'
+        - 'Asynchronous Communication'
+        - 'Clean, Hex Architecture'
+        - 'SOLID'
+        - '12-Factor App'
+    - category: Infrastructure & DevOps
+      items:
+        - 'Terraform'
+        - 'Bicep'
+        - 'ARM Templates'
+        - 'Infrastructure as Code (IaC)'
+        - 'CI/CD'
+        - 'Azure DevOps'
+        - 'Azure Pipelines'
+        - 'GitHub Actions'
+        - GitOps
+        - YAML
+        - 'SonarQube (SAST)'
+        - 'Git'
+        - 'GitHub'
+        - 'TFS'
+    - category: API Management & Integration
+      items:
+        - 'Azure API Management (APIM)'
+        - 'OpenAPI/Swagger'
+        - 'REST'
+        - 'SOAP'
+        - 'GraphQL'
+        - 'Postman'
+        - 'Spectral'
+    - category: Messaging & Asynchronous Systems
+      items:
+        - 'Kafka'
+        - 'RabbitMQ'
+        - 'MassTransit'
+        - 'Eventual Consistency'
+        - 'Transactional Outbox'
+    - category: Security & Access management
+      items:
+        - 'OAuth2'
+        - 'OpenID Connect (OIDC)'
+        - 'RBAC'
+        - 'Authentication & Authorization'
+        - 'Azure AD'
+        - 'B2C'
+        - 'Entra ID'
+        - 'Entra ID External'
+    - category: Monitoring & Observability
+      items:
+        - 'Azure Monitor'
+        - 'Application Insights'
+        - 'Azure Log Analytics'
+        - 'Splunk'
+        - 'Grafana'
+        - 'Loki'
+        - 'Grafana Dashboards & Visualizations'
+    - category: Data & Storage
+      items:
+        - 'SQL Server'
+        - 'Azure SQL'
+        - 'Redis'
+        - 'Entity Framework (Code-first / DB-first)'
+        - 'Dapper'
+        - 'Stored Procedures'
+        - 'Functions'
+        - 'Triggers'
+        - 'Complex Queries'
+        - 'Joins'
+        - 'CTE'
+        - 'DDL'
+        - 'DML'
+        - 'SSIS'
+    - category: Testing & Quality
+      items:
+        - 'xUnit'
+        - 'Unit Tests'
+        - 'Integration Tests'
+        - 'Test-Driven Development (TDD)'
+        - 'Quality Gates'
+    - category: Design Patterns & Principles
+      items:
+        - 'Singleton'
+        - 'Factory'
+        - 'Repository'
+        - 'Unit of Work'
+        - 'CQRS'
+        - 'Saga'
+        - 'Circuit Breaker'
+    - category: Methodologies
+      items:
+        - 'Agile'
+        - 'Scrum'
+        - 'DevOps Culture'
+        - 'Continuous Delivery'
+
