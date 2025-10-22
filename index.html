@@ -1,35 +1,32 @@
 ---
 layout: default
-title: "My Resume"
-pdf_download: "/assets/pdf/thiru-resume.pdf"
+title: My Resume
 ---
 
-<main>
-<section>Career Summary</section>
+<h2>Experience</h2>
 
 {% for exp in site.data.experience %}
-  <section class="experience">
-    <h3>{{ exp.title }}</h3>
-    <h4>{{ exp.company }} — {{ exp.location }} | {{ exp.period }}</h4>
-    <p>{{ exp.description }}</p>
+<section class="experience">
+  <h3>{{ exp.title }}</h3>
+  <h4>{{ exp.company }} — {{ exp.location }} | {{ exp.period }}</h4>
+  <p>{{ exp.description }}</p>
 
-    {% if exp.achievements %}
-      <h5>Key Achievements:</h5>
-      <ul>
-        {% for achievement in exp.achievements %}
-          <li>{{ achievement }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
+  {% if exp.achievements %}
+    <h5>Key Achievements:</h5>
+    <ul>
+      {% for achievement in exp.achievements %}
+        <li>{{ achievement }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
-    {% if exp.tech_stack %}
-      <h5>Tech Stack:</h5>
-      <div class="tech-stack">
-        {% for stack in exp.tech_stack %}
-          <p><strong>{{ stack.category }}:</strong> {{ stack.items | join: ", " }}</p>
-        {% endfor %}
-      </div>
-    {% endif %}
-  </section>
+  {% if exp.tech_stack %}
+    <h5>Tech Stack:</h5>
+    <div class="tech-stack">
+      {% for stack in exp.tech_stack %}
+        <p><strong>{{ stack.category }}:</strong> {{ stack.items | join: ", " }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
 {% endfor %}
-</main>
