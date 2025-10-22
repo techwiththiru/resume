@@ -27,7 +27,7 @@ jobs:
       - name: Install Jekyll
         run: gem install jekyll
       - name: Build site
-        run: jekyll build
+        run: jekyll build --trace
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
