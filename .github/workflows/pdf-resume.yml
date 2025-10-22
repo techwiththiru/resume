@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  PDF_NAME: "thiru-resume.pdf"
+
 jobs:
   build-pdf:
     runs-on: ubuntu-latest
@@ -33,18 +36,25 @@ jobs:
 
       - name: Generate PDF from index.html
         run: |
-          wkhtmltopdf _site/index.html thiru-resume.pdf
+          wkhtmltopdf --encoding utf-8 --enable-local-file-access \
+          _site/index.html "${{ env.PDF_NAME }}"
 
-      - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: resume-pdf
-          path: thiru-resume.pdf
+      # - name: Upload PDF as artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: resume-pdf
+      #     path: "${{ env.PDF_NAME }}"
 
-      - name: Upload to GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: thiru-resume.pdf
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Upload to GitHub Release
+      #   uses: softprops/action-gh-release@v2
+      #   with:
+      #     files: "${{ env.PDF_NAME }}"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Move PDF to docs/
+        run: |
+          FILE=${{ env.PDF_NAME }}
+          rm -f "docs/$FILE"
+          mv "$FILE" docs/
 
