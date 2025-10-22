@@ -2,8 +2,8 @@
   company: BNSF Railway
   location: Atlanta, GA
   period: Jan 2024 - Present
-  description: >
-    Led modernization of legacy monolithic systems into microservices & cloud-native architecture.
+  description: |
+    PTC (Positive Train Control) & Trainsheets Practice Modernization:
   achievements:
     - category: Cloud Platforms & Infrastructure
       items:

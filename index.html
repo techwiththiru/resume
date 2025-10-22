@@ -12,12 +12,16 @@ title: My Resume
   <h5>{{ exp.description }}</h5>
 
   {% if exp.achievements %}
-    <h5>Key Achievements:</h5>
-    <ul>
       {% for achievement in exp.achievements %}
-        <li>{{ achievement }}</li>
+        <span>{{achievement.category}}:&nbsp;</span>
+        {% if achievement.items %}
+            <ul>
+                {% for item in achievement.items %}
+                <li><p>item</p></li>
+                {% endfor %}          
+            </ul>
+        {% endif %}
       {% endfor %}
-    </ul>
   {% endif %}
 
   {% if exp.tech_stack %}
