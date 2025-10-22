@@ -61,11 +61,12 @@ jobs:
         run: bundle exec jekyll build --trace
 
       # 🧩 Step 7: Generate PDF (via Dockerized wkhtmltopdf)
-      - name: Generate PDF
+      - name: Generate PDF from index.html
         run: |
-          docker run --rm -v $PWD:/data madnight/docker-alpine-wkhtmltopdf \
+          docker run --rm -v ${{ github.workspace }}:/data \
+            madnight/docker-alpine-wkhtmltopdf \
             wkhtmltopdf --encoding utf-8 --enable-local-file-access \
-            _site/index.html "${{ env.PDF_NAME }}"
+            /data/_site/index.html /data/"${{ env.PDF_NAME }}"
 
       # 🧩 Step 8: Move PDF to docs/ (ensures it's deployed to GitHub Pages)
       - name: Move PDF to docs/
