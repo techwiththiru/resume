@@ -55,6 +55,7 @@ jobs:
       - name: Move PDF to docs/
         run: |
           FILE=${{ env.PDF_NAME }}
+          mkdir -p docs
           rm -f "docs/$FILE"
           mv "$FILE" docs/
 
