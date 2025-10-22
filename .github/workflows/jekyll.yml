@@ -77,11 +77,12 @@ jobs:
             _site/index.html "$PDF_NAME"
 
       # 📂 Move PDF to docs/ (overwrite old)
-      - name: Move PDF to docs/
+      - name: Move PDF to _site/docs/
         run: |
-          mkdir -p docs
-          rm -f docs/${PDF_BASE_NAME}-*.pdf
-          mv "${{ env.PDF_NAME }}" docs/
+          mkdir -p _site/docs
+          rm -f _site/docs/${PDF_BASE_NAME}-*.pdf
+          mv "${{ env.PDF_NAME }}" _site/docs/
+
 
       # 📤 Upload Jekyll site to GitHub Pages
       - name: Upload artifact
