@@ -1,4 +1,4 @@
-name: Build and Deploy Jekyll site (with PDF)
+name: Build and Deploy Jekyll site
 
 on:
   push:
@@ -14,24 +14,25 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PDF_NAME: thiru-resume-v${{ github.run_number }}.pdf
+  # ✅ Change this base name as needed (no extension)
+  PDF_BASE_NAME: "thiru-resume"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # 🧩 Step 1: Checkout
+      # 🧩 Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 🧩 Step 2: Setup Ruby
+      # 💎 Setup Ruby
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.1"
 
-      # 🧩 Step 3: Cache Ruby gems
+      # ⚙️ Cache Ruby gems (Bundler)
       - name: Cache Ruby gems
         uses: actions/cache@v4
         with:
@@ -40,56 +41,50 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
-      # 🧩 Step 4: Install dependencies
-      - name: Install dependencies with Bundler
+      # 📦 Install dependencies
+      - name: Install dependencies
         run: |
           gem install bundler
           bundle config set --local path 'vendor/bundle'
           bundle install --jobs 4 --retry 3
 
-      # 🧩 Step 5: Cache Jekyll build output (optional but saves time)
-      - name: Cache Jekyll build
-        uses: actions/cache@v4
-        with:
-          path: _site
-          key: ${{ runner.os }}-jekyll-${{ hashFiles('**/*.{html,md,yml,scss,js}') }}
-          restore-keys: |
-            ${{ runner.os }}-jekyll-
-
-      # 🧩 Step 6: Build Jekyll site
+      # 🏗️ Build the Jekyll site
       - name: Build site (Jekyll)
         run: bundle exec jekyll build --trace
 
-      # 🧩 Step 7: Generate PDF (via Dockerized wkhtmltopdf)
+      # 🧰 Cache wkhtmltopdf (for faster builds)
+      - name: Cache wkhtmltopdf
+        id: cache-wkhtmltopdf
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/bin/wkhtmltopdf
+          key: wkhtmltopdf-${{ runner.os }}
+
+      # 🧱 Install wkhtmltopdf if not cached
+      - name: Install wkhtmltopdf
+        if: steps.cache-wkhtmltopdf.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wkhtmltopdf
+
+      # 🧾 Generate configurable + versioned PDF
       - name: Generate PDF from index.html
         run: |
-          docker run --rm -v ${{ github.workspace }}:/data \
-            madnight/docker-alpine-wkhtmltopdf \
-            wkhtmltopdf --encoding utf-8 --enable-local-file-access \
-            --load-error-handling ignore \
-            --disable-smart-shrinking \
-            --no-stop-slow-scripts \
-            file:///data/_site/index.html /data/"${{ env.PDF_NAME }}"
+          TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
+          PDF_NAME="${PDF_BASE_NAME}-${TIMESTAMP}.pdf"
+          echo "PDF_NAME=$PDF_NAME" >> $GITHUB_ENV
+          wkhtmltopdf --encoding utf-8 --enable-local-file-access \
+            _site/index.html "$PDF_NAME"
 
-
-      # 🧩 Step 8: Move PDF to docs/ (ensures it's deployed to GitHub Pages)
+      # 📂 Move PDF to docs/ (overwrite old)
       - name: Move PDF to docs/
         run: |
-          FILE=${{ env.PDF_NAME }}
           mkdir -p docs
-          # Optional: clean up any older PDF files
-          find docs -maxdepth 1 -type f -name "thiru-resume-v*.pdf" -delete || true
-          mv "$FILE" docs/
+          rm -f docs/${PDF_BASE_NAME}-*.pdf
+          mv "${{ env.PDF_NAME }}" docs/
 
-      # 🧩 Step 9: Upload PDF as artifact (optional)
-      - name: Upload PDF as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: resume-pdf
-          path: docs/${{ env.PDF_NAME }}
-
-      # 🧩 Step 10: Upload Jekyll site for deployment
-      - name: Upload artifact for GitHub Pages
+      # 📤 Upload Jekyll site to GitHub Pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
