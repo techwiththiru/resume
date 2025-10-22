@@ -1,0 +1,16 @@
+- title: Architect - Applications and Cloud Solutions
+  company: BNSF Railway
+  location: Atlanta, GA
+  period: Jan 2024 - Present
+  description: >
+    Led modernization of legacy monolithic systems into microservices & cloud-native architecture.
+  achievements:
+    - "Implemented Azure-based microservices platform with auto-scaling."
+    - "Reduced operational costs by ~30%."
+  tech_stack:
+    - category: Languages & Frameworks
+      items: ["C#", ".NET 8", ".NET 6", ".NET Core", "Web API", "TypeScript", "JavaScript"]
+    - category: Frontend Development
+      items: ["Angular (v18)", "Micro Frontends", "Nx", "SPA Development", "Responsive UI"]
+    - category: Cloud & Platform Services
+      items: ["Azure App Services", "Functions", "Logic Apps", "Application Gateway", "Key Vault", "Blob Storage"]

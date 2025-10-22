@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="{{ site.theme | default: 'dark' }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +8,36 @@
 </head>
 <body>
 <header>
-  <div>
-    <h1>{{ site.title | default: "Your Name" }}</h1>
-    <p>{{ site.description | default: "Full Stack Architect | Cloud Solutions | API Strategy" }}</p>
+  <div class="site-title">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    {% if site.subtitle %}
+      <p>{{ site.subtitle }}</p>
+    {% endif %}
   </div>
 
   <div class="header-actions">
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-    <button class="pdf-button" onclick="window.print()">Download PDF</button>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    {% if site.pdf_download %}
+      <a href="{{ site.pdf_download }}" class="pdf-button" target="_blank">Download PDF</a>
+    {% endif %}
   </div>
 </header>
-<main>
-{{ content }}
-</main>
 
-<script>
-    const root = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    root.setAttribute('data-theme', savedTheme);
 
-    btn.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-    });
-</script>
+  <main class="content">
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+  </footer>
+
+  <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
 </body>
 </html>
