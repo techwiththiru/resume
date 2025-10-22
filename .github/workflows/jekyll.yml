@@ -24,15 +24,14 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - name: Install dependencies
-        run: |
-          gem install bundler jekyll
-          bundle install || true
+      - name: Install Jekyll
+        run: gem install jekyll
       - name: Build site
-        run: bundle exec jekyll build
+        run: jekyll build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
