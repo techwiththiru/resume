@@ -1,7 +1,7 @@
 /* Theme colors */
 :root[data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #f5f5f5;
+    --bg-color: #252525;
+    --text-color: #f0e7d5;
     --accent-color: #1e90ff;
 }
 
@@ -15,7 +15,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+    font-family: 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0 1rem;
