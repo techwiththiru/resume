@@ -66,7 +66,11 @@ jobs:
           docker run --rm -v ${{ github.workspace }}:/data \
             madnight/docker-alpine-wkhtmltopdf \
             wkhtmltopdf --encoding utf-8 --enable-local-file-access \
-            /data/_site/index.html /data/"${{ env.PDF_NAME }}"
+            --load-error-handling ignore \
+            --disable-smart-shrinking \
+            --no-stop-slow-scripts \
+            file:///data/_site/index.html /data/"${{ env.PDF_NAME }}"
+
 
       # 🧩 Step 8: Move PDF to docs/ (ensures it's deployed to GitHub Pages)
       - name: Move PDF to docs/
