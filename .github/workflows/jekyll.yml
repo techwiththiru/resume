@@ -53,35 +53,35 @@ jobs:
         run: bundle exec jekyll build --trace
 
       # 🧰 Cache wkhtmltopdf (for faster builds)
-      - name: Cache wkhtmltopdf
-        id: cache-wkhtmltopdf
-        uses: actions/cache@v4
-        with:
-          path: /usr/local/bin/wkhtmltopdf
-          key: wkhtmltopdf-${{ runner.os }}
+      # - name: Cache wkhtmltopdf
+      #   id: cache-wkhtmltopdf
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: /usr/local/bin/wkhtmltopdf
+      #     key: wkhtmltopdf-${{ runner.os }}
 
-      # 🧱 Install wkhtmltopdf if not cached
-      - name: Install wkhtmltopdf
-        if: steps.cache-wkhtmltopdf.outputs.cache-hit != 'true'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wkhtmltopdf
+      # # 🧱 Install wkhtmltopdf if not cached
+      # - name: Install wkhtmltopdf
+      #   if: steps.cache-wkhtmltopdf.outputs.cache-hit != 'true'
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y wkhtmltopdf
 
-      # 🧾 Generate configurable + versioned PDF
-      - name: Generate PDF from index.html
-        run: |
-          TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
-          PDF_NAME="${PDF_BASE_NAME}-${TIMESTAMP}.pdf"
-          echo "PDF_NAME=$PDF_NAME" >> $GITHUB_ENV
-          wkhtmltopdf --encoding utf-8 --enable-local-file-access \
-            _site/index.html "$PDF_NAME"
+      # # 🧾 Generate configurable + versioned PDF
+      # - name: Generate PDF from index.html
+      #   run: |
+      #     TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
+      #     PDF_NAME="${PDF_BASE_NAME}-${TIMESTAMP}.pdf"
+      #     echo "PDF_NAME=$PDF_NAME" >> $GITHUB_ENV
+      #     wkhtmltopdf --encoding utf-8 --enable-local-file-access \
+      #       _site/index.html "$PDF_NAME"
 
-      # 📂 Move PDF to docs/ (overwrite old)
-      - name: Move PDF to _site/docs/
-        run: |
-          mkdir -p _site/docs
-          rm -f _site/docs/${PDF_BASE_NAME}-*.pdf
-          mv "${{ env.PDF_NAME }}" _site/docs/
+      # # 📂 Move PDF to docs/ (overwrite old)
+      # - name: Move PDF to _site/docs/
+      #   run: |
+      #     mkdir -p _site/docs
+      #     rm -f _site/docs/${PDF_BASE_NAME}-*.pdf
+      #     mv "${{ env.PDF_NAME }}" _site/docs/
 
 
       # 📤 Upload Jekyll site to GitHub Pages
