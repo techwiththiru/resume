@@ -1,0 +1,33 @@
+
+name: "Your Name"
+title: "Full Stack Architect | Cloud | DevOps"
+email: "your.email@example.com"
+phone: "+1 123-456-7890"
+summary: "Experienced architect with focus on scalable cloud applications, API strategy, and DevOps culture."
+
+skills:
+  - category: "Languages & Frameworks"
+    items: ["C#", ".NET 8", "TypeScript", "Angular", "HTML5", "CSS3"]
+  - category: "Cloud & Platform"
+    items: ["Azure", "Functions", "Logic Apps", "Key Vault", "Serverless"]
+  - category: "DevOps & Infra"
+    items: ["Terraform", "Azure DevOps", "GitHub Actions", "SonarQube"]
+  - category: "Architecture"
+    items: ["Microservices", "CQRS", "DDD", "Event-Driven"]
+  - category: "Methodologies"
+    items: ["Agile", "Scrum", "Continuous Delivery"]
+
+experience:
+  - company: "Company A"
+    role: "Principal Architect"
+    period: "2020 - Present"
+    details: "Leading modernization initiatives using Azure PaaS and Microservices."
+  - company: "Company B"
+    role: "Senior Engineer"
+    period: "2016 - 2020"
+    details: "Delivered enterprise web platforms using .NET Core and Angular."
+
+education:
+  - degree: "Master of Computer Science"
+    school: "Your University"
+    year: "2015"
