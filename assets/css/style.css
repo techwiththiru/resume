@@ -117,3 +117,34 @@ a:hover {
     width: 100%;
   }
 }
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pdf-button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 1.2rem;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.pdf-button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* Hide on print */
+@media print {
+  .pdf-button {
+    display: none;
+  }
+}
